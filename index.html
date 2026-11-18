@@ -13,12 +13,20 @@
       rel="stylesheet" 
     />
 
-    <link rel="icon" type="image/svg+xml" href="/assets/dog-logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/dog-logo.svg" />
+
+    <!-- Stylesheets (relative paths for GitHub Pages compatibility) -->
+    <link rel="stylesheet" href="./src/styles/variables.css" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <link rel="stylesheet" href="./src/styles/layout.css" />
+    <link rel="stylesheet" href="./src/styles/components.css" />
+    <link rel="stylesheet" href="./src/styles/modal.css" />
+    <link rel="stylesheet" href="./src/styles/toast.css" />
   </head>
   <body>
     <!-- Top-left Brand Badge -->
     <header class="app-brand" role="banner">
-      <img src="/assets/dog-logo.svg" alt="Logo Mundo Pet" class="app-brand__icon" />
+      <img src="./assets/dog-logo.svg" alt="Logo Mundo Pet" class="app-brand__icon" />
       <span class="app-brand__name">Mundo pet</span>
     </header>
 
@@ -34,9 +42,9 @@
 
           <!-- Date Filter Selector -->
           <div class="date-picker-button" title="Clique para alterar a data exibida">
-            <img src="/assets/calendar.svg" alt="" class="date-picker-button__icon" aria-hidden="true" />
+            <img src="./assets/calendar.svg" alt="" class="date-picker-button__icon" aria-hidden="true" />
             <span id="agenda-date-display" class="date-picker-button__text">10/01/2024</span>
-            <img src="/assets/chevron-down.svg" alt="" class="date-picker-button__chevron" aria-hidden="true" />
+            <img src="./assets/chevron-down.svg" alt="" class="date-picker-button__chevron" aria-hidden="true" />
             <input 
               type="date" 
               id="agenda-date-input" 
@@ -53,7 +61,7 @@
           <article class="section-card" aria-labelledby="morning-title">
             <header class="section-header">
               <div class="section-header__icon-wrapper">
-                <img src="/assets/sun-morning.svg" alt="" aria-hidden="true" />
+                <img src="./assets/sun-morning.svg" alt="" aria-hidden="true" />
               </div>
               <h2 id="morning-title" class="section-header__title">Manhã</h2>
               <span class="section-header__range">09h-12h</span>
@@ -67,7 +75,7 @@
           <article class="section-card" aria-labelledby="afternoon-title">
             <header class="section-header">
               <div class="section-header__icon-wrapper">
-                <img src="/assets/sun-afternoon.svg" alt="" aria-hidden="true" />
+                <img src="./assets/sun-afternoon.svg" alt="" aria-hidden="true" />
               </div>
               <h2 id="afternoon-title" class="section-header__title">Tarde</h2>
               <span class="section-header__range">13h-18h</span>
@@ -81,7 +89,7 @@
           <article class="section-card" aria-labelledby="night-title">
             <header class="section-header">
               <div class="section-header__icon-wrapper">
-                <img src="/assets/moon-night.svg" alt="" aria-hidden="true" />
+                <img src="./assets/moon-night.svg" alt="" aria-hidden="true" />
               </div>
               <h2 id="night-title" class="section-header__title">Noite</h2>
               <span class="section-header__range">19h-21h</span>
@@ -122,7 +130,7 @@
           data-close-modal 
           aria-label="Fechar janela de agendamento"
         >
-          <img src="/assets/close.svg" alt="" aria-hidden="true" />
+          <img src="./assets/close.svg" alt="" aria-hidden="true" />
         </button>
 
         <header class="modal-header">
@@ -135,7 +143,7 @@
           <div class="form-group">
             <label for="tutor-input" class="form-label">Nome do tutor</label>
             <div class="input-wrapper">
-              <img src="/assets/user.svg" alt="" class="input-icon" aria-hidden="true" />
+              <img src="./assets/user.svg" alt="" class="input-icon" aria-hidden="true" />
               <input 
                 type="text" 
                 id="tutor-input" 
@@ -153,7 +161,7 @@
           <div class="form-group">
             <label for="pet-input" class="form-label">Nome do pet</label>
             <div class="input-wrapper">
-              <img src="/assets/paw.svg" alt="" class="input-icon" aria-hidden="true" />
+              <img src="./assets/paw.svg" alt="" class="input-icon" aria-hidden="true" />
               <input 
                 type="text" 
                 id="pet-input" 
@@ -170,7 +178,7 @@
           <div class="form-group">
             <label for="phone-input" class="form-label">Telefone</label>
             <div class="input-wrapper">
-              <img src="/assets/phone.svg" alt="" class="input-icon" aria-hidden="true" />
+              <img src="./assets/phone.svg" alt="" class="input-icon" aria-hidden="true" />
               <input 
                 type="tel" 
                 id="phone-input" 
@@ -207,7 +215,7 @@
             <div class="form-group">
               <label for="modal-date-input" class="form-label">Data</label>
               <div class="input-wrapper">
-                <img src="/assets/calendar.svg" alt="" class="input-icon" aria-hidden="true" />
+                <img src="./assets/calendar.svg" alt="" class="input-icon" aria-hidden="true" />
                 <input 
                   type="date" 
                   id="modal-date-input" 
@@ -223,7 +231,7 @@
             <div class="form-group">
               <label for="time-input" class="form-label">Hora</label>
               <div class="input-wrapper">
-                <img src="/assets/clock.svg" alt="" class="input-icon" aria-hidden="true" />
+                <img src="./assets/clock.svg" alt="" class="input-icon" aria-hidden="true" />
                 <input 
                   type="time" 
                   id="time-input" 
@@ -276,7 +284,7 @@
       </div>
     </div>
 
-    <!-- Script entrypoint -->
-    <script type="module" src="/src/main.js"></script>
+    <!-- Script entrypoint (relative path for GitHub Pages compatibility) -->
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
