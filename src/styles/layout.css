@@ -1,0 +1,200 @@
+/* Top-left Brand Logo Badge */
+.app-brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-secondary);
+  border-bottom-right-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.app-brand__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.app-brand__name {
+  font-family: var(--font-family-logo);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--content-brand);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+}
+
+/* Main Layout Container */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 20px 100px 20px;
+  position: relative;
+}
+
+.agenda-wrapper {
+  width: 100%;
+  max-width: 870px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Agenda Header */
+.agenda-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.agenda-header__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.agenda-header__title {
+  font-family: var(--font-family-heading);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: var(--content-primary);
+}
+
+.agenda-header__subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--content-secondary);
+}
+
+/* Date Input Picker */
+.date-picker-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--content-secondary);
+}
+
+.date-picker-button:hover,
+.date-picker-button:focus-within {
+  border-color: var(--border-focus);
+  color: var(--content-primary);
+  box-shadow: 0 0 0 2px rgba(146, 130, 250, 0.15);
+}
+
+.date-picker-button__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.date-picker-button__text {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  min-width: 95px;
+}
+
+.date-picker-button__chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Hidden native date input layered on top of button for full native browser picker support */
+.date-picker-button input[type="date"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Floating Action Button (NOVO AGENDAMENTO) */
+.btn-floating-schedule {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background-color: var(--content-brand);
+  color: var(--content-dark);
+  font-family: var(--font-family-heading);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  box-shadow: var(--glow-brand);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-floating-schedule:hover {
+  background-color: var(--content-brand-hover);
+  box-shadow: var(--glow-brand-hover);
+  transform: translateY(-2px);
+}
+
+.btn-floating-schedule:active {
+  transform: translateY(0);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 70px 16px 120px 16px;
+  }
+
+  .agenda-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .date-picker-button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-floating-schedule {
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+}

@@ -1,0 +1,238 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Content Card */
+.modal-card {
+  position: relative;
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  padding: 36px 36px 32px 36px;
+  box-shadow: var(--shadow-modal);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--content-secondary);
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--content-primary);
+}
+
+.modal-close-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Modal Header */
+.modal-header {
+  margin-bottom: 24px;
+  padding-right: 28px;
+}
+
+.modal-title {
+  font-family: var(--font-family-heading);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--content-primary);
+  margin-bottom: 4px;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--content-secondary);
+}
+
+/* Form Styling */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--content-primary);
+}
+
+/* Input Container with Icons */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 10px 14px;
+  gap: 10px;
+  transition: all var(--transition-fast);
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(146, 130, 250, 0.2);
+}
+
+.input-wrapper.has-error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 2px rgba(255, 92, 92, 0.2);
+}
+
+.input-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.input-field {
+  flex: 1;
+  font-size: 15px;
+  color: var(--content-primary);
+  background: transparent;
+  width: 100%;
+}
+
+.input-field::placeholder {
+  color: var(--content-secondary);
+  opacity: 0.7;
+}
+
+/* Native date/time picker enhancements inside custom input wrapper */
+.input-field[type="date"],
+.input-field[type="time"] {
+  color-scheme: dark;
+}
+
+/* Textarea input wrapper */
+.textarea-wrapper {
+  align-items: flex-start;
+  padding: 12px 14px;
+}
+
+.textarea-field {
+  resize: vertical;
+  min-height: 70px;
+  max-height: 140px;
+  line-height: 1.4;
+}
+
+/* Two-column grid for Date and Hour */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Form Helper & Error message */
+.form-error {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--error);
+  display: none;
+  line-height: 16px;
+  margin-top: 2px;
+}
+
+.form-group.has-error .form-error {
+  display: block;
+  animation: fadeIn 0.2s ease-in;
+}
+
+/* Form Action Buttons */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn-submit {
+  background-color: var(--content-brand);
+  color: var(--content-dark);
+  font-family: var(--font-family-heading);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: 8px;
+  box-shadow: var(--glow-brand);
+}
+
+.btn-submit:hover {
+  background-color: var(--content-brand-hover);
+  box-shadow: var(--glow-brand-hover);
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .modal-card {
+    padding: 24px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}

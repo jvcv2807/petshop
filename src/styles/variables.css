@@ -1,0 +1,42 @@
+:root {
+  /* Colors */
+  --bg-page: #14151D;
+  --bg-secondary: #2E2C30;
+  --bg-card: #23242C;
+  --bg-input: #14151D;
+  
+  --content-primary: #FFFFFF;
+  --content-secondary: #98959D;
+  --content-tertiary: #666666;
+  --content-brand: #9282FA;
+  --content-brand-hover: #A496FC;
+  --content-dark: #050505;
+
+  --border-primary: #3E3C41;
+  --border-focus: #9282FA;
+  --border-divisor: #2E2C30;
+  --border-item: #353339;
+
+  --accent-orange: #F09102;
+  --accent-orange-light: #75501B;
+  --accent-blue: #027DF0;
+  --accent-blue-light: #16487A;
+  --accent-yellow: #F0DC02;
+  --accent-yellow-light: #756E1B;
+
+  --error: #FF5C5C;
+  --success: #22C55E;
+
+  /* Typography */
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-heading: 'Inter Tight', 'Inter', sans-serif;
+  --font-family-logo: 'Familjen Grotesk', sans-serif;
+
+  /* Shadows */
+  --glow-brand: 0px 0px 40px 0px rgba(146, 130, 250, 0.35);
+  --glow-brand-hover: 0px 0px 50px 0px rgba(146, 130, 250, 0.55);
+  --shadow-modal: 0px 20px 48px rgba(0, 0, 0, 0.7);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+}

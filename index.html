@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mundo Pet - Sua Agenda</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&family=Inter+Tight:wght@700&family=Inter:wght@400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/dog-logo.svg" />
+  </head>
+  <body>
+    <!-- Top-left Brand Badge -->
+    <header class="app-brand" role="banner">
+      <img src="/assets/dog-logo.svg" alt="Logo Mundo Pet" class="app-brand__icon" />
+      <span class="app-brand__name">Mundo pet</span>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+      <section class="agenda-wrapper" aria-labelledby="agenda-heading">
+        <!-- Agenda Header -->
+        <header class="agenda-header">
+          <div class="agenda-header__title-group">
+            <h1 id="agenda-heading" class="agenda-header__title">Sua agenda</h1>
+            <p class="agenda-header__subtitle">Aqui você pode ver todos os clientes e serviços agendados para hoje.</p>
+          </div>
+
+          <!-- Date Filter Selector -->
+          <div class="date-picker-button" title="Clique para alterar a data exibida">
+            <img src="/assets/calendar.svg" alt="" class="date-picker-button__icon" aria-hidden="true" />
+            <span id="agenda-date-display" class="date-picker-button__text">10/01/2024</span>
+            <img src="/assets/chevron-down.svg" alt="" class="date-picker-button__chevron" aria-hidden="true" />
+            <input 
+              type="date" 
+              id="agenda-date-input" 
+              name="agenda-date" 
+              value="2024-01-10" 
+              aria-label="Selecionar data da agenda" 
+            />
+          </div>
+        </header>
+
+        <!-- Periods Sections -->
+        <div class="agenda-sections" role="region" aria-label="Horários agendados por período">
+          <!-- Morning Section -->
+          <article class="section-card" aria-labelledby="morning-title">
+            <header class="section-header">
+              <div class="section-header__icon-wrapper">
+                <img src="/assets/sun-morning.svg" alt="" aria-hidden="true" />
+              </div>
+              <h2 id="morning-title" class="section-header__title">Manhã</h2>
+              <span class="section-header__range">09h-12h</span>
+            </header>
+            <div id="morning-appointments" class="appointments-list">
+              <!-- Rendered via JS -->
+            </div>
+          </article>
+
+          <!-- Afternoon Section -->
+          <article class="section-card" aria-labelledby="afternoon-title">
+            <header class="section-header">
+              <div class="section-header__icon-wrapper">
+                <img src="/assets/sun-afternoon.svg" alt="" aria-hidden="true" />
+              </div>
+              <h2 id="afternoon-title" class="section-header__title">Tarde</h2>
+              <span class="section-header__range">13h-18h</span>
+            </header>
+            <div id="afternoon-appointments" class="appointments-list">
+              <!-- Rendered via JS -->
+            </div>
+          </article>
+
+          <!-- Night Section -->
+          <article class="section-card" aria-labelledby="night-title">
+            <header class="section-header">
+              <div class="section-header__icon-wrapper">
+                <img src="/assets/moon-night.svg" alt="" aria-hidden="true" />
+              </div>
+              <h2 id="night-title" class="section-header__title">Noite</h2>
+              <span class="section-header__range">19h-21h</span>
+            </header>
+            <div id="night-appointments" class="appointments-list">
+              <!-- Rendered via JS -->
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button 
+      type="button" 
+      id="btn-new-schedule" 
+      class="btn-floating-schedule"
+      aria-haspopup="dialog"
+      aria-expanded="false"
+    >
+      Novo agendamento
+    </button>
+
+    <!-- Modal "Agende um atendimento" -->
+    <div 
+      id="schedule-modal" 
+      class="modal-overlay" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="modal-title" 
+      aria-describedby="modal-desc"
+      aria-hidden="true"
+    >
+      <div class="modal-card">
+        <button 
+          type="button" 
+          class="modal-close-btn" 
+          data-close-modal 
+          aria-label="Fechar janela de agendamento"
+        >
+          <img src="/assets/close.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <header class="modal-header">
+          <h2 id="modal-title" class="modal-title">Agende um atendimento</h2>
+          <p id="modal-desc" class="modal-subtitle">Preencha os dados do cliente para realizar o agendamento:</p>
+        </header>
+
+        <form id="schedule-form" class="modal-form" novalidate>
+          <!-- Nome do tutor -->
+          <div class="form-group">
+            <label for="tutor-input" class="form-label">Nome do tutor</label>
+            <div class="input-wrapper">
+              <img src="/assets/user.svg" alt="" class="input-icon" aria-hidden="true" />
+              <input 
+                type="text" 
+                id="tutor-input" 
+                name="tutor" 
+                class="input-field" 
+                placeholder="Helena Souza" 
+                required 
+                autocomplete="name" 
+              />
+            </div>
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Nome do pet -->
+          <div class="form-group">
+            <label for="pet-input" class="form-label">Nome do pet</label>
+            <div class="input-wrapper">
+              <img src="/assets/paw.svg" alt="" class="input-icon" aria-hidden="true" />
+              <input 
+                type="text" 
+                id="pet-input" 
+                name="pet" 
+                class="input-field" 
+                placeholder="Cheddar" 
+                required 
+              />
+            </div>
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Telefone -->
+          <div class="form-group">
+            <label for="phone-input" class="form-label">Telefone</label>
+            <div class="input-wrapper">
+              <img src="/assets/phone.svg" alt="" class="input-icon" aria-hidden="true" />
+              <input 
+                type="tel" 
+                id="phone-input" 
+                name="phone" 
+                class="input-field" 
+                placeholder="(00) 0 0000-0000" 
+                maxlength="15" 
+                required 
+                autocomplete="tel" 
+              />
+            </div>
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Descrição do serviço -->
+          <div class="form-group">
+            <label for="service-input" class="form-label">Descrição do serviço</label>
+            <div class="input-wrapper textarea-wrapper">
+              <textarea 
+                id="service-input" 
+                name="service" 
+                class="input-field textarea-field" 
+                placeholder="Banho e tosa" 
+                rows="3" 
+                required
+              ></textarea>
+            </div>
+            <span class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Data e Hora -->
+          <div class="form-row">
+            <!-- Data -->
+            <div class="form-group">
+              <label for="modal-date-input" class="form-label">Data</label>
+              <div class="input-wrapper">
+                <img src="/assets/calendar.svg" alt="" class="input-icon" aria-hidden="true" />
+                <input 
+                  type="date" 
+                  id="modal-date-input" 
+                  name="date" 
+                  class="input-field" 
+                  required 
+                />
+              </div>
+              <span class="form-error" role="alert"></span>
+            </div>
+
+            <!-- Hora -->
+            <div class="form-group">
+              <label for="time-input" class="form-label">Hora</label>
+              <div class="input-wrapper">
+                <img src="/assets/clock.svg" alt="" class="input-icon" aria-hidden="true" />
+                <input 
+                  type="time" 
+                  id="time-input" 
+                  name="time" 
+                  class="input-field" 
+                  list="valid-hours-list"
+                  placeholder="12:00" 
+                  required 
+                />
+                <datalist id="valid-hours-list">
+                  <!-- Morning -->
+                  <option value="09:00">09:00 (Manhã)</option>
+                  <option value="09:30">09:30 (Manhã)</option>
+                  <option value="10:00">10:00 (Manhã)</option>
+                  <option value="10:30">10:30 (Manhã)</option>
+                  <option value="11:00">11:00 (Manhã)</option>
+                  <option value="11:30">11:30 (Manhã)</option>
+                  <option value="12:00">12:00 (Manhã)</option>
+                  <!-- Afternoon -->
+                  <option value="13:00">13:00 (Tarde)</option>
+                  <option value="13:30">13:30 (Tarde)</option>
+                  <option value="14:00">14:00 (Tarde)</option>
+                  <option value="14:30">14:30 (Tarde)</option>
+                  <option value="15:00">15:00 (Tarde)</option>
+                  <option value="15:30">15:30 (Tarde)</option>
+                  <option value="16:00">16:00 (Tarde)</option>
+                  <option value="16:30">16:30 (Tarde)</option>
+                  <option value="17:00">17:00 (Tarde)</option>
+                  <option value="17:30">17:30 (Tarde)</option>
+                  <option value="18:00">18:00 (Tarde)</option>
+                  <!-- Night -->
+                  <option value="19:00">19:00 (Noite)</option>
+                  <option value="19:30">19:30 (Noite)</option>
+                  <option value="20:00">20:00 (Noite)</option>
+                  <option value="20:30">20:30 (Noite)</option>
+                  <option value="21:00">21:00 (Noite)</option>
+                </datalist>
+              </div>
+              <span class="form-error" role="alert"></span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="modal-actions">
+            <button type="submit" class="btn-submit">
+              Agendar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script entrypoint -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
